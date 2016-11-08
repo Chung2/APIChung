@@ -1,7 +1,13 @@
 import requests
 import hashlib
 import time
+import random
 
+
+def gebruiker():
+    while True:
+        user = str(input('Wie ben jij?'))
+    return user
 
 #lijst met de helden
 def helden():
@@ -70,8 +76,18 @@ def exactNameCharacter(result):
            print(result[i].get('name'))
            print(result[i].get('description'))
 
+def Selectrandomhero(result):
+
+    random.shuffle(result)
+    print(result[0].get('id'))
+    print(result[0].get('name'))
+    print(result[0].get('description'))
+
+
 heroes = helden()
 lijst = setup_Api(heroes)
 result = connect_Api(lijst)
 #nameResult = nameCharacter(result)
-nameResult2 = exactNameCharacter(result)
+#nameResult2 = exactNameCharacter(result)
+randomHero = Selectrandomhero(result)
+
