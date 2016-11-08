@@ -1,8 +1,7 @@
 import requests
 import hashlib
 import time
-import simplejson as json
-import pprintpp as pprint
+
 
 #lijst met de helden
 def helden():
