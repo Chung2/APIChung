@@ -18,6 +18,7 @@ Wil je de spelregels tijdens het spel zien klik dan op de 'Help' knop.
 
 
 Deze applicatie wordt mede mogelijk gemaakt door:
+
 Chung Wong
 Lennart Heinen
 Roy van Vliet
