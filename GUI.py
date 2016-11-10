@@ -1,12 +1,12 @@
 from tkinter import *
 from tkinter.messagebox import showinfo
 from API_test_marvel import *
-from Databasemarvelscore import *
+#from Databasemarvelscore import *
 
 root = Tk()
 punten = 25
 counter = 30
-datumVandaag = datetime.date.today()
+#datumVandaag = datetime.date.today()
 
 
 def toonVenster():
@@ -65,14 +65,21 @@ def toonVenster():
     Titel.grid(row=1, column=5)
 
     # functie timer (maakt hiervoor label_timer aan!!)
-    def counter_label(label_timer):
+    def counter_label():
+        Timer = Label(master=subwindow,
+                 background='#C92D39',
+                 text=counter)
+        Timer.grid(row=1, column=6)
+
         def count():
             global counter
             counter -= 1
-            label_timer.config(text=str(counter))
-            label_timer.after(1000, count)
+            Timer.config(text=str(counter))
+            Timer.after(1000, count)
 
         count()
+
+    counter_label()
 
     # De Question knop
     def QuestionKnop():
@@ -85,6 +92,9 @@ def toonVenster():
         Hint1["text"] = BeschrijvingHeld2
         punten -= 3
         label3['text'] = punten
+
+
+
 
     # de Hint labellen
     Hint1 = Label(master=subwindow,
