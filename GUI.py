@@ -4,22 +4,22 @@ from API_test_marvel import *
 from Databasemarvelscore import *
 
 root = Tk()
+punten = 25
+counter = 30
+datumVandaag = datetime.date.today()
+
 
 def toonVenster():
     gebruiker = entry_1.get()
 
     def close():
         subwindow.withdraw()
+
     subwindow = Toplevel(master=root)
 
-
     # Maakt het hoofdscherm
-    subwindow = Tk()
 
-    punten = 25
-    counter = 30
     naam = gebruiker  # dit natuurlijk veranderen
-    datumVandaag = datetime.date.today()
 
     # result wordt opgehaald en in een lijst gezet
     lijst1 = result
@@ -30,8 +30,7 @@ def toonVenster():
     if NaamHeld in BeschrijvingHeld:
         BeschrijvingHeld2 = BeschrijvingHeld.replace(NaamHeld, '-----')
 
-
-    #   aantal punten bij het begin
+    # aantal punten bij het begin
     # pop-up checked of iron man wordt opgegeven
     def clicked():
         global punten
@@ -39,7 +38,7 @@ def toonVenster():
 
         if invoer == NaamHeld:
             bericht = 'Dit was het juiste antwoord!'
-            print(naam,datumVandaag,str(punten))
+            print(naam, datumVandaag, str(punten))
             showinfo(title='Goed', message=bericht)
             Gegevensinvoeren(naam, datumVandaag, punten)
         else:
@@ -48,16 +47,15 @@ def toonVenster():
             showinfo(title='Fout', message=bericht)
             label3['text'] = punten
 
-
     # achtergrond wordt rood gemaakt
     subwindow.configure(background='#C92D39')
 
     label3 = Label(master=subwindow,
-                background='#C92D39',
-                text=punten,
-                wraplength=500,
-                height=3,
-                padx=50)
+                   background='#C92D39',
+                   text=punten,
+                   wraplength=500,
+                   height=3,
+                   padx=50)
     label3.grid(row=0, column=5)
 
     # Titel label ( wordt veranderd )
@@ -65,7 +63,6 @@ def toonVenster():
     Titel = Label(master=subwindow, image=logo, background="#C92D39")
 
     Titel.grid(row=1, column=5)
-
 
     # functie timer (maakt hiervoor label_timer aan!!)
     def counter_label(label_timer):
@@ -77,12 +74,10 @@ def toonVenster():
 
         count()
 
-
     # De Question knop
     def QuestionKnop():
         bericht = "De bedoeling van het spel is dat je een Marvel Hero raadt, Je krijgt hiervoor in het begin al een zetje in de goede richting Je start met 25 punten. Een fout antwoord kost je 1 punt en een hint kost je 3 punten! Probeer zo snel mogelijk de Marvel Hero te raden om met zoveel mogelijk punten te eindigen."
         showinfo(title='Informatie', message=bericht)
-
 
     # de Functie voor de hintknop
     def HintKnop():
@@ -91,37 +86,36 @@ def toonVenster():
         punten -= 3
         label3['text'] = punten
 
-
     # de Hint labellen
     Hint1 = Label(master=subwindow,
-                background='#C92D39',
-                text='Hint 1',
-                wraplength=500,
-                height=6,
-                padx=50)
+                  background='#C92D39',
+                  text='Hint 1',
+                  wraplength=500,
+                  height=6,
+                  padx=50)
     Hint1.grid(row=2, column=5)
     Hint2 = Label(master=subwindow,
-                background='#C92D39',
-                text='Hint 2',
-                wraplength=500,
-                height=3,
-                padx=50)
+                  background='#C92D39',
+                  text='Hint 2',
+                  wraplength=500,
+                  height=3,
+                  padx=50)
     Hint2.grid(row=3, column=5)
     Hint3 = Label(master=subwindow,
-                background='#C92D39',
-                text='Hint 3',
-                wraplength=500,
-                height=3,
-                padx=50)
+                  background='#C92D39',
+                  text='Hint 3',
+                  wraplength=500,
+                  height=3,
+                  padx=50)
     Hint3.grid(row=4, column=5)
 
     Naam = Label(master=subwindow,
-                background='#C92D39',
-                text=naam,  # variable waar de naam inzit met input.
-                wraplength=500,
-                font=(10),
-                height=6,
-                padx=50)
+                 background='#C92D39',
+                 text=naam,  # variable waar de naam inzit met input.
+                 wraplength=500,
+                 font=(10),
+                 height=6,
+                 padx=50)
     Naam.grid(row=3, column=4)
 
     #    de invoer button
@@ -144,12 +138,11 @@ def toonVenster():
     subwindow.mainloop()
 
 
-
 root.configure(background='#C92D39')
 logo = PhotoImage(file="Marvel_Beginscherm.gif")
 label_logo = Label(root, image=logo).pack()
 entry_1 = Entry(master=root)
-entry_1.pack(padx=10, pady=10)
+entry_1.pack(padx=10, pady=10,)
 
 StartButton = Button(master=root, text="Start", command=toonVenster)
 StartButton.pack()
