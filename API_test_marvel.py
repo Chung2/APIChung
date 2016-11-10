@@ -3,11 +3,6 @@ import hashlib
 import time
 import random
 
-
-def gebruiker():
-    user = str(input('Wie ben jij?'))
-    return user
-
 #lijst met de helden
 def helden():
     #1008368
@@ -78,9 +73,9 @@ def exactNameCharacter(result):
 def Selectrandomhero(result):
 
     random.shuffle(result)
-    print(result[0].get('id'))
-    print(result[0].get('name'))
-    print(result[0].get('description'))
+    #print(result[0].get('id'))
+    #print(result[0].get('name'))
+    #print(result[0].get('description'))
 
 
 heroes = helden()

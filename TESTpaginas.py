@@ -4,9 +4,10 @@ from API_test_marvel import *
 
 
 def toonVenster():
+    gebruiker = entry_1.get()
+
     def close():
         subwindow.withdraw()
-
     subwindow = Toplevel(master=root)
 
     lijst1 = result
@@ -35,7 +36,7 @@ def toonVenster():
             bericht = 'Je hebt het fout'
             showinfo(title='Fout', message=bericht)
 
-    subwindow.configure(background='red')
+    subwindow.configure(background='#C92D39')
 
 
 
@@ -65,7 +66,7 @@ def toonVenster():
 
 
     label2 = Label(master=subwindow,
-              text='vul cijfer in voor een kwadraat',
+              text=entry_1.get(),
               background='red',
               font=('Helvetica', 10, 'bold italic'),
               height=3)
@@ -99,6 +100,11 @@ def toonVenster():
 
 
 root = Tk()
+root.configure(background='#C92D39')
+logo = PhotoImage(file="Marvel_Beginscherm.gif")
+label_logo = Label(root, image=logo).pack()
+entry_1 = Entry(master=root)
+entry_1.pack(padx=10, pady=10)
 
 StartButton = Button(master=root, text="Start", command=toonVenster)
 StartButton.pack()
