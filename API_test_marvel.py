@@ -5,14 +5,13 @@ import random
 
 
 def gebruiker():
-    while True:
-        user = str(input('Wie ben jij?'))
+    user = str(input('Wie ben jij?'))
     return user
 
 #lijst met de helden
 def helden():
     #1008368
-    lijstHelden = [1009368,1009351,1009220,1009338,1009189,1009610,1009465,1009718,1009504,1009697,1009664,1009407,1009185,1009268,1009685]
+    lijstHelden = [1009368,1009351,1009220,1009610,1009718,1009697,1009664,1009262,1009619]
     return lijstHelden
 
 #nodig voor apikey
