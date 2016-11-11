@@ -10,8 +10,7 @@ cursor = connection.cursor()
 
 lijstUitslag =[]
 def Gegevensuithalen() :
-    sql = 'SELECT * FROM score'
-
+    sql = 'SELECT * FROM score ORDER BY score DESC'
     try:
         cursor.execute(sql)
         results = cursor.fetchall()
@@ -21,7 +20,6 @@ def Gegevensuithalen() :
             score = row[2]
             lijstUitslag.append('naam= %s,datum= %s,score= %d' % \
                                (naam, datum, score))
-
         return lijstUitslag
     except:
         print('haha het werkt niet')

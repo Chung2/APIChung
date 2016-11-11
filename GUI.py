@@ -9,8 +9,27 @@ counter = 30
 datumVandaag = datetime.date.today()
 
 
+def Scores():
+    def close2():
+        subwindow2.withdraw()
+
+    subwindow2 = Toplevel(master=root)
+
+    lijstUitslag = Gegevensuithalen()
+
+    for i in range(len(lijstUitslag)):
+        score = Label(master=subwindow2,
+                      background='#C92D39',
+                      text=lijstUitslag[i],
+                      wraplength=500,
+                      height=3,
+                      padx=50)
+        score.grid(row=i, column=2)
+
+
 def toonVenster():
     gebruiker = entry_naam.get()
+    root.withdraw()
 
     def close():
         subwindow.withdraw()
@@ -34,10 +53,12 @@ def toonVenster():
     # pop-up checked of iron man wordt opgegeven
     def clicked():
         global punten
+        global counter
         invoer = entry_antwoord.get()
 
         if invoer == NaamHeld:
             bericht = 'Dit was het juiste antwoord!'
+            counter += 1
             print(naam, datumVandaag, str(punten))
             showinfo(title='Goed', message=bericht)
             Gegevensinvoeren(naam, datumVandaag, punten)
@@ -107,13 +128,6 @@ def toonVenster():
                   height=6,
                   padx=50)
     Hint1.grid(row=2, column=5)
-    Hint2 = Label(master=subwindow,
-                  background='#C92D39',
-                  text='Hint 2',
-                  wraplength=500,
-                  height=3,
-                  padx=50)
-    Hint2.grid(row=3, column=5)
     Hint3 = Label(master=subwindow,
                   background='#C92D39',
                   text='Deze personage heeft ' + str(len(NaamHeld)) + ' letters in zijn naam',
@@ -150,31 +164,19 @@ def toonVenster():
     # toon het hoofdscherm
     subwindow.mainloop()
 
-lijstUislag = Gegevensuithalen()
-print(lijstUislag)
-
-score = Label(master=root,
-                   background='#C92D39',
-                   text='test',
-                   wraplength=500,
-                   height=3,
-                   padx=50)
-score.grid(row=8,column=2)    
-score1 = Label(master=root,
-                   background='#C92D39',
-                   text='HAALLA',
-                   wraplength=500,
-                   height=3,
-                   padx=50)
-score1.grid(row=8,column=6)
 
 root.configure(background='#C92D39')
 logo = PhotoImage(file="Marvel_Beginscherm.gif")
-label_logo = Label(root, image=logo).grid(row=0,column=3)
+label_logo = Label(root, image=logo).grid(row=0, column=3)
+label_naam = Label(master=root, text='Naam graag!', background='#C92D39')
+label_naam.grid(row=1, column=3)
 entry_naam = Entry(master=root)
-entry_naam.grid(row=1,column=3,padx=10, pady=10,)
+entry_naam.grid(row=2, column=3, padx=10, pady=10, )
 
 StartButton = Button(master=root, text="Start", command=toonVenster)
-StartButton.grid(row=2,column=3)
+StartButton.grid(row=3, column=3)
+
+ScoreButton = Button(master=root, text="Score", command=Scores)
+ScoreButton.grid(row=6, column=0)
 
 root.mainloop()
