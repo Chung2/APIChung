@@ -1,16 +1,16 @@
 from tkinter import *
 from tkinter.messagebox import showinfo
 from API_test_marvel import *
-#from Databasemarvelscore import *
+from Databasemarvelscore import *
 
 root = Tk()
 punten = 25
 counter = 30
-#datumVandaag = datetime.date.today()
+datumVandaag = datetime.date.today()
 
 
 def toonVenster():
-    gebruiker = entry_1.get()
+    gebruiker = entry_naam.get()
 
     def close():
         subwindow.withdraw()
@@ -34,7 +34,7 @@ def toonVenster():
     # pop-up checked of iron man wordt opgegeven
     def clicked():
         global punten
-        invoer = entry.get()
+        invoer = entry_antwoord.get()
 
         if invoer == NaamHeld:
             bericht = 'Dit was het juiste antwoord!'
@@ -67,15 +67,21 @@ def toonVenster():
     # functie timer (maakt hiervoor label_timer aan!!)
     def counter_label():
         Timer = Label(master=subwindow,
-                 background='#C92D39',
-                 text=counter)
+                      background='#C92D39',
+                      text=counter)
         Timer.grid(row=1, column=6)
 
         def count():
             global counter
-            counter -= 1
-            Timer.config(text=str(counter))
-            Timer.after(1000, count)
+            global punten
+            if counter != 0:
+                counter -= 1
+                Timer.config(text=str(counter))
+                Timer.after(1000, count)
+                label3['text'] = punten
+            else:
+                punten -= 10
+                label3['text'] = punten
 
         count()
 
@@ -92,9 +98,6 @@ def toonVenster():
         Hint1["text"] = BeschrijvingHeld2
         punten -= 3
         label3['text'] = punten
-
-
-
 
     # de Hint labellen
     Hint1 = Label(master=subwindow,
@@ -113,7 +116,7 @@ def toonVenster():
     Hint2.grid(row=3, column=5)
     Hint3 = Label(master=subwindow,
                   background='#C92D39',
-                  text='Hint 3',
+                  text='Deze personage heeft ' + str(len(NaamHeld)) + ' letters in zijn naam',
                   wraplength=500,
                   height=3,
                   padx=50)
@@ -141,8 +144,8 @@ def toonVenster():
     QuestionButton.place(x=1500, y=0)
 
     # de entry balk (input)
-    entry = Entry(master=subwindow)
-    entry.grid(row=5, column=5)
+    entry_antwoord = Entry(master=subwindow)
+    entry_antwoord.grid(row=5, column=5)
 
     # toon het hoofdscherm
     subwindow.mainloop()
@@ -151,8 +154,8 @@ def toonVenster():
 root.configure(background='#C92D39')
 logo = PhotoImage(file="Marvel_Beginscherm.gif")
 label_logo = Label(root, image=logo).pack()
-entry_1 = Entry(master=root)
-entry_1.pack(padx=10, pady=10,)
+entry_naam = Entry(master=root)
+entry_naam.pack(padx=10, pady=10)
 
 StartButton = Button(master=root, text="Start", command=toonVenster)
 StartButton.pack()

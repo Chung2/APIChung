@@ -23,6 +23,7 @@ def Gegevensuithalen() :
 
     except:
         print('haha het werkt niet')
+    connection.close()
 
 def Gegevensinvoeren(naam,datumVandaag,punten):
 
@@ -33,9 +34,7 @@ def Gegevensinvoeren(naam,datumVandaag,punten):
     try:
         cursor.execute(sql)
         connection.commit()
-        print('gelukt')
     except  pymysql.Error as e:
         connection.rollback()
         print('Error Mysql')
-
-connection.close()
+    connection.close()
