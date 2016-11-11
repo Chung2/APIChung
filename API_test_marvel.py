@@ -70,13 +70,10 @@ def exactNameCharacter(result):
            print(result[i].get('name'))
            print(result[i].get('description'))
 
+#functie in willekeurige volgorde zetten
 def Selectrandomhero(result):
 
     random.shuffle(result)
-    #print(result[0].get('id'))
-    #print(result[0].get('name'))
-    #print(result[0].get('description'))
-
 
 heroes = helden()
 lijst = setup_Api(heroes)
