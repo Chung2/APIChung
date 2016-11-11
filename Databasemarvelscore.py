@@ -8,6 +8,7 @@ connection = pymysql.connect(host='localhost',
 
 cursor = connection.cursor()
 
+lijstUitslag =[]
 def Gegevensuithalen() :
     sql = 'SELECT * FROM score'
 
@@ -18,9 +19,10 @@ def Gegevensuithalen() :
             naam = row[0]
             datum = row[1]
             score = row[2]
-            print('naam= %s,datum= %s,score= %d' % \
-                  (naam, datum, score))
+            lijstUitslag.append('naam= %s,datum= %s,score= %d' % \
+                               (naam, datum, score))
 
+        return lijstUitslag
     except:
         print('haha het werkt niet')
     connection.close()
