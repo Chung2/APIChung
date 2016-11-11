@@ -151,13 +151,29 @@ def toonVenster():
     subwindow.mainloop()
 
 
+
+score = Label(master=root,
+                   background='#C92D39',
+                   text="///////////////////////////////////",
+                   wraplength=500,
+                   height=3,
+                   padx=50)
+score.grid(row=8,column=2)    
+score1 = Label(master=root,
+                   background='#C92D39',
+                   text="///////////////////////////////////",
+                   wraplength=500,
+                   height=3,
+                   padx=50)
+score1.grid(row=8,column=6)
+
 root.configure(background='#C92D39')
 logo = PhotoImage(file="Marvel_Beginscherm.gif")
-label_logo = Label(root, image=logo).pack()
-entry_naam = Entry(master=root)
-entry_naam.pack(padx=10, pady=10)
+label_logo = Label(root, image=logo).grid(row=0,column=3)
+entry_1 = Entry(master=root)
+entry_1.grid(row=1,column=3,padx=10, pady=10,)
 
 StartButton = Button(master=root, text="Start", command=toonVenster)
-StartButton.pack()
+StartButton.grid(row=2,column=3)
 
 root.mainloop()
