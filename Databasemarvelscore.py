@@ -22,6 +22,7 @@ def Gegevensuithalen() :
                                (naam, datum, score))
         return lijstUitslag
     except:
+        #erior 
         print('haha het werkt niet')
     connection.close()
 
